@@ -56,6 +56,8 @@ class DatabaseManager:
 
     def restart(self):
         self.cursor.execute("""drop table player""")
+        self.connection.close()  # since self.connect opens a new connection
+        self.connect()
         self.connection.commit()
 
     def enrich_player_data(self):
