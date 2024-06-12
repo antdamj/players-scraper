@@ -24,16 +24,6 @@ class DatabaseManager:
             self.cursor.execute("""create table player(url, name, fullname, birth_date, age, birth_place, birth_country, positions, current_club, national_team, appearances_current_club, goals_current_club, scraping_timestamp)""")
 
     def insert_data(self, data: pd.DataFrame):
-
-        # for initial data: keep only columns that are required
-        # fields_intersection = [f for f in allowed_fields if f in data.columns]
-        # data = data[fields_intersection]
-
-        # for initial data: add all missing required columns
-        # missing_columns = [f for f in allowed_fields if f not in data.columns]
-        # data = data.assign(**{m: None for m in missing_columns})
-
-
         for row in data.iterrows():
             row = row[1]  # because iterrows returns tuple (row_index, row_data)
 
